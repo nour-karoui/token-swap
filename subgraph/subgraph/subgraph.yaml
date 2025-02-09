@@ -1,0 +1,35 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: TokenSwap
+    network: base-sepolia
+    source:
+      address: "0x9e196fb7d668bECBd007100318f8137e6C762635"
+      abi: TokenSwap
+      startBlock: 21464321
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - LiquidityAdded
+        - LiquidityAdded1
+        - Swapped
+        - TokensSwapped
+      abis:
+        - name: TokenSwap
+          file: ./abis/TokenSwap.json
+      eventHandlers:
+        - event: LiquidityAdded(address,uint256,uint256)
+          handler: handleLiquidityAdded
+        - event: LiquidityAdded(uint256,uint256,address)
+          handler: handleLiquidityAdded1
+        - event: Swapped(uint256,bool,address)
+          handler: handleSwapped
+        - event: TokensSwapped(address,uint256,bool,uint256,uint256)
+          handler: handleTokensSwapped
+      file: ./src/token-swap.ts
