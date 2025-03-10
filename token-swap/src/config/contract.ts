@@ -3,7 +3,7 @@ import TokenABI from '../abi/Token.json' with {type: 'json'}
 import { baseSepolia } from 'wagmi/chains';
 
 export const TokenSwapContractConfig = {
-  address: "0x9e196fb7d668bECBd007100318f8137e6C762635",
+  address: "0xf46c0d70734A96cC91AF43278668f35e7c09D76D",
   abi: TokenSwapABI,
   chainId: baseSepolia.id,
 } as const;

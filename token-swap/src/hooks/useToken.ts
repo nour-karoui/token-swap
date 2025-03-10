@@ -13,18 +13,17 @@ export const useToken = (address: Address) => {
     functionName: "name",
   });
 
-  const { data: hash, writeContract, error } = useWriteContract();
+  const { data, writeContract, error, isPending, isSuccess } =
+    useWriteContract();
 
   const approve = (amount: bigint) => {
-    const res = writeContract({
+    writeContract({
       ...TokenContractConfig,
       address: address,
       functionName: "approve",
       args: [TokenSwapContractConfig.address, amount],
     });
-    console.log(res, hash);
-    console.log(error);
   };
 
-  return { name: tokenAName, approve, hash };
+  return { name: tokenAName, approve, data, error, isPending, isSuccess };
 };

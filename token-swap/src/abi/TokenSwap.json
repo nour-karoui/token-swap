@@ -72,56 +72,6 @@
   },
   {
     "type": "event",
-    "name": "LiquidityAdded",
-    "inputs": [
-      {
-        "name": "amountA",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "amountB",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "user",
-        "type": "address",
-        "indexed": false,
-        "internalType": "address"
-      }
-    ],
-    "anonymous": false
-  },
-  {
-    "type": "event",
-    "name": "Swapped",
-    "inputs": [
-      {
-        "name": "amount",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "aTob",
-        "type": "bool",
-        "indexed": false,
-        "internalType": "bool"
-      },
-      {
-        "name": "user",
-        "type": "address",
-        "indexed": false,
-        "internalType": "address"
-      }
-    ],
-    "anonymous": false
-  },
-  {
-    "type": "event",
     "name": "TokensSwapped",
     "inputs": [
       {

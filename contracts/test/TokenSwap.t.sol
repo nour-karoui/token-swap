@@ -5,7 +5,13 @@ import {Test, console} from "forge-std/Test.sol";
 import {TokenSwap} from "../src/TokenSwap.sol";
 import {Token} from "../src/Token.sol";
 
+
+
 contract TokenSwapTest is Test {
+
+    event LiquidityAdded(address funder, uint256 amountA, uint256 amountB);
+    event TokensSwapped(address swapper, uint256 amount, bool aTob, uint256 amountA, uint256 amountB);
+
     TokenSwap public tokenSwap;
     Token public tokenA;
     Token public tokenB;
@@ -29,6 +35,10 @@ contract TokenSwapTest is Test {
         tokenA.approve(address(tokenSwap), 100);
         tokenB.approve(address(tokenSwap), 100);
 
+        vm.expectEmit(true, true, true, true);
+
+        emit LiquidityAdded(address(alice), 100, 100);
+        
         tokenSwap.addLiquidity(100, 100);
         assertEq(tokenA.balanceOf(address(tokenSwap)), 100);
         assertEq(tokenB.balanceOf(address(tokenSwap)), 100);
@@ -68,6 +78,8 @@ contract TokenSwapTest is Test {
         vm.expectRevert("Insufficient TokenA liquidity");
         tokenSwap.swap(100, true);
 
+        vm.expectEmit(true, true, true, true);
+        emit TokensSwapped(address(alice), 50, true, 150, 50);
         tokenSwap.swap(50, true);
 
         vm.assertEq(tokenA.balanceOf(address(tokenSwap)), 150);

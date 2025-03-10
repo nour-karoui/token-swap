@@ -1,0 +1,21 @@
+type LiquidityAddition @entity(immutable: true) {
+  id: Bytes!
+  funder: Bytes! # address
+  amountA: BigInt! # uint256
+  amountB: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Swap @entity(immutable: true) {
+  id: Bytes!
+  swapper: Bytes! # address
+  amount: BigInt! # uint256
+  aTob: Boolean! # bool
+  amountA: BigInt! # uint256
+  amountB: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

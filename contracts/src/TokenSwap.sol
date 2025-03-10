@@ -11,9 +11,6 @@ contract TokenSwap is ReentrancyGuard {
     event LiquidityAdded(address funder, uint256 amountA, uint256 amountB);
     event TokensSwapped(address swapper, uint256 amount, bool aTob, uint256 amountA, uint256 amountB);
 
-    event LiquidityAdded(uint256 amountA, uint256 amountB, address user);
-    event Swapped(uint256 amount, bool aTob, address user);
-
     constructor(address _tokenA, address _tokenB) {
         tokenA = Token(_tokenA);
         tokenB = Token(_tokenB);
